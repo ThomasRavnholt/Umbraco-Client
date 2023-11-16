@@ -1,4 +1,4 @@
 // Reexport your entry components here
-import { createUmbracoClient } from "./umbracoclient.js";
+import { createUmbracoClient } from './umbracoclient.js';
 
-export { createUmbracoClient }
+export { createUmbracoClient };

@@ -7,12 +7,13 @@ const umbracoApiKey = SECRET_API_KEY;
 const umbraco = createUmbracoClient(umbracoApiDomain, umbracoApiKey);
 
 async function fetchContent() {
-    try {
-        const content = await umbraco.getContentByType("person");
-        console.log(content);
-    } catch (error) {
-        console.error('Error fetching content:', error);
-    }
+	try {
+		const people = await umbraco.getContentByType('person');
+		const technlogy = await umbraco.getContentByType('technology');
+		console.log(technlogy);
+	} catch (error) {
+		console.error('Error fetching content:', error);
+	}
 }
 
-console.log(fetchContent())
+console.log(fetchContent());
