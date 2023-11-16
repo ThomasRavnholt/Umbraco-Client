@@ -1,6 +1,7 @@
 {
-	"name": "umbracoclient",
-	"version": "0.0.1",
+	"name": "@thomasravnholt/umbracoclient",
+	"version": "0.0.2",
+	"description": "A JavaScript client for interacting with the Umbraco Content Delivery API.",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -44,5 +45,8 @@
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@thomasravnholt/umbracoclient": "^0.0.2"
+	}
 }
