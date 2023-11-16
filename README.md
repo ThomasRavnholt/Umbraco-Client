@@ -1,6 +1,4 @@
-# README.md for UmbracoClient
-
-## What is UmbracoClient?
+# What is UmbracoClient?
 
 UmbracoClient is a JavaScript package that provides a convenient interface for interacting with the Umbraco Content Delivery API. It supports various operations such as fetching content by ID or content type with customizable query parameters like sorting, filtering, and localization.
 
