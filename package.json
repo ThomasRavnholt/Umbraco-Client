@@ -1,6 +1,6 @@
 {
 	"name": "@thomasravnholt/umbracoclient",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"license": "MIT",
 	"description": "A JavaScript client for interacting with the Umbraco Content Delivery API.",
 	"repository": {
