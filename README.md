@@ -5,7 +5,7 @@ UmbracoClient is a JavaScript package that provides a convenient interface for i
 ## Installation
 
 ```bash
-npm install umbracoclient
+npm i @thomasravnholt/umbracoclient
 ```
 
 ## Setup
