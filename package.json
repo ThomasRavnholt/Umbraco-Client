@@ -1,6 +1,6 @@
 {
 	"name": "@thomasravnholt/umbracoclient",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"description": "A JavaScript client for interacting with the Umbraco Content Delivery API.",
 	"repository": {
 		"type": "git",
