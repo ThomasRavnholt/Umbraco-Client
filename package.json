@@ -1,22 +1,22 @@
 {
 	"name": "@thomasravnholt/umbracoclient",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "A JavaScript client for interacting with the Umbraco Content Delivery API.",
 	"repository": {
-        "type": "git",
-        "url": "https://github.com/ThomasRavnholt/Umbraco-Client"
-    },
+		"type": "git",
+		"url": "https://github.com/ThomasRavnholt/Umbraco-Client"
+	},
 	"keywords": [
-        "umbraco", 
+		"umbraco",
 		"umbraco delivery api",
-        "cms", 	
-        "content delivery", 
-        "api client", 
-        "headless cms", 
-        "umbraco headless", 
-        "content management", 
-        "javascript"
-    ],
+		"cms",
+		"content delivery",
+		"api client",
+		"headless cms",
+		"umbraco headless",
+		"content management",
+		"javascript"
+	],
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
