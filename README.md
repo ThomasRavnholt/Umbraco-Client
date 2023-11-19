@@ -1,6 +1,7 @@
-# What is UmbracoClient?
 
-UmbracoClient is a JavaScript package that provides a convenient interface for interacting with the Umbraco Content Delivery API. It supports various operations such as fetching content by ID or content type with customizable query parameters like sorting, filtering, and localization, as well as media fetching capabilities.
+# What is UmbracoClient
+
+UmbracoClient is a JavaScript package providing a convenient interface for interacting with the Umbraco Content Delivery API. It supports various operations such as fetching content by ID, name, route, content type, or multiple IDs, as well as media fetching capabilities. It also offers customizable query parameters for sorting, filtering, expanding, language selection, and more.
 
 ## Installation
 
@@ -10,18 +11,18 @@ npm i @thomasravnholt/umbracoclient
 
 ## Setup
 
-First, import `createUmbracoClient` from the package:
+Import `createUmbracoClient` from the package:
 
 ```javascript
-import { createUmbracoClient } from 'umbracoclient';
+import { createUmbracoClient } from '@thomasravnholt/umbracoclient';
 ```
 
-Then, create an instance of the client:
+Create an instance of the client:
 
 ```javascript
 const umbracoClient = createUmbracoClient(
-	'https://your-umbraco-domain.com',
-	'your-optional-api-key'
+    'https://your-umbraco-domain.com',
+    'your-optional-api-key'
 );
 ```
 
@@ -31,6 +32,24 @@ const umbracoClient = createUmbracoClient(
 
 ```javascript
 umbracoClient.getContentById('content-id', options).then((data) => console.log(data));
+```
+
+### Fetch Multiple Contents by IDs
+
+```javascript
+umbracoClient.getContentByIds(['id1', 'id2'], options).then((data) => console.log(data));
+```
+
+### Fetch Content by Name
+
+```javascript
+umbracoClient.getContentByName('content-name', options).then((data) => console.log(data));
+```
+
+### Fetch Content by Route
+
+```javascript
+umbracoClient.getContentByRoute('content-route', options).then((data) => console.log(data));
 ```
 
 ### Fetch Content by Type
@@ -59,15 +78,17 @@ umbracoClient.getMediaItems(options).then((data) => console.log(data));
 
 ## Options
 
-You can customize requests using the following options:
+Customize requests using options:
 
 - `sort`: Define sorting order and type.
 - `expand`: Specify properties to expand in the response.
 - `filter`: Apply filters to the content or media.
 - `language`: Request content or media in a specific language.
-- `preview`: Set to true to fetch unpublished content or media (requires API key).
-- `fetch`: Choose from 'ancestors', 'children', or 'descendants' for content.
-- `fetchIdOrPath`: Provide the ID or path for fetch operations.
+- `preview`: Fetch unpublished content or media (requires API key).
+- `fetch`: Options like 'ancestors', 'children', or 'descendants' for content.
+- `fetchIdOrPath`: ID or path for fetch operations.
+- `skip`: Number of items to skip (for pagination).
+- `take`: Number of items to take (for pagination).
 
 ## Example
 
@@ -75,9 +96,13 @@ Fetch blog posts sorted by creation date in descending order:
 
 ```javascript
 const options = {
-	sort: { type: 'createDate', order: 'desc' },
-	expand: ['property1', 'property2'],
-	filter: 'contentTypeAlias'
+    sort: { type: 'createDate', order: 'desc' },
+    expand: ['property1', 'property2'],
+    filter: 'contentTypeAlias',
+    language: 'en-US',
+    preview: true,
+    skip: 0,
+    take: 10
 };
 
 umbracoClient.getContentByType('blogPost', options).then((data) => console.log(data));

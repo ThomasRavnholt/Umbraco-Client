@@ -20,7 +20,10 @@ export function createUmbracoClient(domain: string, apiKey?: string): UmbracoCli
 
 export interface UmbracoClient {
 	getContentById(id: string, options?: Options): Promise<any>;
+	getContentByIds(id: string, options?: Options): Promise<any>;
 	getContentByType(contentType: string, options?: Options): Promise<any>;
+	getContentByName(name: string, options?: Options): Promise<any>; 
+	getContentByRoute(route: string, options?: Options): Promise<any>; 
 	getMediaById(id: string, options?: Options): Promise<any>;
 	getMediaByPath(path: string, options?: Options): Promise<any>;
 	getMediaItems(options?: Options): Promise<any>;

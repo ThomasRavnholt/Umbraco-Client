@@ -94,6 +94,65 @@ function createUmbracoClient(domain, apiKey) {
 		},
 
 		/**
+		 * Gets content by name from the Umbraco API.
+		 *
+		 * @param {string} name - The name of the content to fetch.
+		 * @param {Object} [options] - Additional options for the request.
+		 * @returns {Promise<Object>} The content data.
+		 */
+		getContentByName: async (name, options) => {
+			const queryParams = options ? constructQueryParams(options) : '';
+			const headers = { ...defaultHeaders };
+	
+			if (options?.preview) {
+				headers['Preview'] = 'true';
+			}
+	
+			const response = await fetch(`${apiUrl}content/item/name/${name}${queryParams}`, { headers });
+			return response.json();
+		},
+	
+		/**
+		 * Gets content by route from the Umbraco API.
+		 *
+		 * @param {string} route - The route of the content to fetch.
+		 * @param {Object} [options] - Additional options for the request.
+		 * @returns {Promise<Object>} The content data.
+		 */
+		getContentByRoute: async (route, options) => {
+			const queryParams = options ? constructQueryParams(options) : '';
+			const headers = { ...defaultHeaders };
+	
+			if (options?.preview) {
+				headers['Preview'] = 'true';
+			}
+	
+			const response = await fetch(`${apiUrl}content/item/route/${route}${queryParams}`, { headers });
+			return response.json();
+		},
+
+		/**
+		 * Gets multiple content items by their IDs from the Umbraco API.
+		 *
+		 * @param {string[]} ids - An array of IDs of the content items to fetch.
+		 * @param {Object} [options] - Additional options for the request.
+		 * @returns {Promise<Object[]>} An array of content data.
+		 */
+		getContentByIds: async (ids, options) => {
+			const headers = { ...defaultHeaders };
+			if (options?.preview) {
+				headers['Preview'] = 'true';
+			}
+
+			// Combine all IDs into a single query parameter
+			const idsQueryParam = ids.map(id => `ids=${id}`).join('&');
+			const queryParams = options ? `&${constructQueryParams(options)}` : '';
+
+			const response = await fetch(`${apiUrl}content/items?${idsQueryParam}${queryParams}`, { headers });
+			return response.json();
+		},
+
+		/**
 		 * Gets content by type from the Umbraco API.
 		 *
 		 * @param {string} contentType - The type of content to fetch.
