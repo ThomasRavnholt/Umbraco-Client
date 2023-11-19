@@ -12,6 +12,8 @@ export interface Options {
 	apiKey?: string;
 	fetch?: 'ancestors' | 'children' | 'descendants';
 	fetchIdOrPath?: string;
+	skip?: number;
+	take?: number;
 }
 
 export function createUmbracoClient(domain: string, apiKey?: string): UmbracoClient;
