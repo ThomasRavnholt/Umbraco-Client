@@ -103,15 +103,15 @@ function createUmbracoClient(domain, apiKey) {
 		getContentByName: async (name, options) => {
 			const queryParams = options ? constructQueryParams(options) : '';
 			const headers = { ...defaultHeaders };
-	
+
 			if (options?.preview) {
 				headers['Preview'] = 'true';
 			}
-	
-			const response = await fetch(`${apiUrl}content/item/name/${name}${queryParams}`, { headers });
+
+			const response = await fetch(`${apiUrl}content/item/${name}${queryParams}`, { headers });
 			return response.json();
 		},
-	
+
 		/**
 		 * Gets content by route from the Umbraco API.
 		 *
@@ -122,12 +122,12 @@ function createUmbracoClient(domain, apiKey) {
 		getContentByRoute: async (route, options) => {
 			const queryParams = options ? constructQueryParams(options) : '';
 			const headers = { ...defaultHeaders };
-	
+
 			if (options?.preview) {
 				headers['Preview'] = 'true';
 			}
-	
-			const response = await fetch(`${apiUrl}content/item/route/${route}${queryParams}`, { headers });
+
+			const response = await fetch(`${apiUrl}content/item/${route}${queryParams}`, { headers });
 			return response.json();
 		},
 
@@ -145,10 +145,12 @@ function createUmbracoClient(domain, apiKey) {
 			}
 
 			// Combine all IDs into a single query parameter
-			const idsQueryParam = ids.map(id => `ids=${id}`).join('&');
+			const idsQueryParam = ids.map((id) => `ids=${id}`).join('&');
 			const queryParams = options ? `&${constructQueryParams(options)}` : '';
 
-			const response = await fetch(`${apiUrl}content/items?${idsQueryParam}${queryParams}`, { headers });
+			const response = await fetch(`${apiUrl}content/items?${idsQueryParam}${queryParams}`, {
+				headers
+			});
 			return response.json();
 		},
 
