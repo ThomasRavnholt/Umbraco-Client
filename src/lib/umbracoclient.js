@@ -40,6 +40,16 @@ function constructQueryParams(options) {
 		queryParams += `&fetch=${options.fetch}:${options.fetchIdOrPath}`;
 	}
 
+	// Handling skip parameter
+	if (options.skip !== undefined) {
+		queryParams += `&skip=${options.skip}`;
+	}
+
+	// Handling take parameter
+	if (options.take !== undefined) {
+		queryParams += `&take=${options.take}`;
+	}
+
 	return queryParams;
 }
 
